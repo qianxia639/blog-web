@@ -10,12 +10,13 @@ const Captcha = (props:any) => {
         const response = await axios.post("http://localhost:6754/api/captcha/generate")
         setCaptchaId(response.data.data.captchaId)
         setCaptchaBase64(response.data.data.captchaBase64)
+        props.it(captcha_id)
     }
 
     useEffect(() => {
         generateCaptcha()
         // setCaptchaId(captcha_id)
-        props.it(captcha_id)
+       
     }, [])
 
     return (

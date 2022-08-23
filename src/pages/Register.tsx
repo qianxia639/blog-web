@@ -47,11 +47,11 @@ class Register extends Component {
             // <main className="form-signin">
             <form className="form-signin" onSubmit={this.register}>
                 <h1 className="h3 mb-3 font-weight-normal">注 册</h1>
-                {/* <label htmlFor="username" className="sr-only">用户名</label> */}
+                
                 <input type="text" className="form-control" placeholder="请输入用户名" required autoFocus
                     onChange={e => this.username = e.target.value}
                 />
-                {/* <label htmlFor="password" className="sr-only">密码</label> */}
+                
                 <input type="password" className="form-control" placeholder="请输入密码" required
                     onChange={e => this.password = e.target.value}
                 />
@@ -63,7 +63,7 @@ class Register extends Component {
                     onChange={e => this.captcha = e.target.value}
                 />
                 <Captcha it={(e: any) => this.setState({ captcha_id: e })} />
-                {/* <label htmlFor="captcha" className="sr-only">验证码</label> */}
+                
                 <button className="btn btn-lg btn-primary btn-block" type="submit">注 册</button>
             </form>
             // </main>

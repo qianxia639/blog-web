@@ -6,7 +6,7 @@ export class Blog {
         public title: string,
         public content: string,
         public flag: string,
-        public views: number,
+        public views = 0,
         public updated_at: number,
     ) { }
 

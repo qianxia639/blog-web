@@ -1,0 +1,23 @@
+
+.card-margin {
+    margin-top: 3vh;
+}
+
+.card-margin-max {
+    margin-top: 5vh;
+}
+
+.card-margin-small {
+    margin-top: 1vh;
+}
+
+.nav-font {
+    color: #48a1ee !important;
+    font-size: 24px
+}
+
+.aaa {
+    position: absolute;
+    bottom: 0px;
+    left: 30px;
+}

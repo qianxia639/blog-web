@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
-
+import '../assets/css/me.css'
 const Nav = () => {
 
     // const [user, setUser] = useState({
@@ -24,7 +24,7 @@ const Nav = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">Navbar</a>
+            <a className="navbar-brand nav-font" href="#">LYY_BLOG</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
