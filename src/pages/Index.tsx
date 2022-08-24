@@ -5,6 +5,8 @@ import '../assets/css/me.css'
 import axios from 'axios'
 import { Blog } from '../models/Blog'
 import Pagination from '../component/Pagination'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 
 const Index = () => {
@@ -13,13 +15,6 @@ const Index = () => {
   const [blogLatestList, setBlogLatestList] = useState([])
   const [page, setPage] = useState(1)
   const [lastPage, setLastPage] = useState(0)
-
-  // 博客分页列表
-  const getBlogPageList = async () => {
-    const { data } = await axios.get(`http://localhost:6754/api/blog/pageList?page=${page}`)
-    setBlogPageList(data.data.dataList)
-    setLastPage(data.data.lastPage)
-  }
 
   // 分类列表
   const getTypeList = async () => {
@@ -33,15 +28,8 @@ const Index = () => {
     setBlogLatestList(response.data.data)
   }
 
-  // const [id, setId] = useState()
-  // 获取博客信息
-  const getBlogInfo = async (id: number) => {
-    const response = await axios.get(`http://localhost:6754/api/blog/${id}`)
-    return response.data
-  }
-
   useEffect(() => {
-    // getBlogPageList()
+    // 博客分页列表
     (
       async () => {
         const { data } = await axios.get(`http://localhost:6754/api/blog/pageList?page=${page}`)
@@ -74,12 +62,12 @@ const Index = () => {
                         <div className="row">
                           <div className="col-md-8">
                             <div className="card-body">
-                              <h4 className="card-tit" onClick={() => getBlogInfo(blog.id)}>{blog.title}</h4>
+                              <Link className="card-title" to={`/blog/${blog.id}/info`}>{blog.title}</Link>
                               <p className="card-text">{blog.content}</p>
                               <div className='d-flex justify-content-between align-items-center'>
                                 <div className="text-musted">
                                   <img src="https://picsum.photos/200/150/?images=25" width={25} height={25} className='rounded-circle' alt="" />
-                                  &nbsp;&nbsp;{blog.nickname} {blog.views} {blog.updated_at}
+                                  &nbsp;&nbsp;{blog.nickname} {blog.views} {moment(blog.updated_at).format('YYYY-MM-DD')}
                                 </div>
                                 <small className='text-musted'>
                                   <button className='btn btn-sm btn-outline-info' disabled type='button'>{blog.type_name}</button>
@@ -130,7 +118,7 @@ const Index = () => {
               <ul className="list-group list-group-flush">
                 {blogLatestList.map((blog: Blog) => {
                   return (
-                    <li className="list-group-item" onClick={() => getBlogInfo(blog.id)} key={blog.id}>{blog.title}</li>
+                    <Link className="list-group-item" to={`/blog/${blog.id}/info`} key={blog.id}>{blog.title}</Link>
                   )
                 })}
               </ul>

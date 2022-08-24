@@ -14,7 +14,7 @@ class Register extends Component {
 
     state = {
         redirect: false,
-        captcha_id: ''
+        captcha_id: '',
     }
 
     register = async (e: SyntheticEvent) => {
@@ -24,8 +24,8 @@ class Register extends Component {
             username: this.username,
             password: this.password,
             password_confire: this.password_confire,
-            captcha: this.captcha,
-            captcha_id: this.state.captcha_id
+            // captcha: this.captcha,
+            // captcha_id: this.state.captcha_id
         })
 
         if (response.data.state) {
@@ -59,9 +59,9 @@ class Register extends Component {
                     onChange={e => this.password_confire = e.target.value}
                 />
 
-                <input type="text" className="form-control" placeholder="请再次输入验证码" required
+                {/* <input type="text" className="form-control" placeholder="请再次输入验证码" required
                     onChange={e => this.captcha = e.target.value}
-                />
+                /> */}
                 {/* <Captcha it={(e: any) => this.setState({ captcha_id: e })} /> */}
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">注 册</button>
