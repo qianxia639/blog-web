@@ -4,17 +4,21 @@ import '../assets/css/blog.css'
 import '../assets/css/me.css'
 import axios from 'axios'
 import { Blog } from '../models/Blog'
+import Pagination from '../component/Pagination'
 
 
 const Index = () => {
   const [blogPageList, setBlogPageList] = useState([])
   const [typeList, setTypeList] = useState([{ 'type_name': '', 'count': 0 }])
   const [blogLatestList, setBlogLatestList] = useState([])
+  const [page, setPage] = useState(1)
+  const [lastPage, setLastPage] = useState(0)
 
   // 博客分页列表
   const getBlogPageList = async () => {
-    const { data } = await axios.get("http://localhost:6754/api/blog/pageList")
+    const { data } = await axios.get(`http://localhost:6754/api/blog/pageList?page=${page}`)
     setBlogPageList(data.data.dataList)
+    setLastPage(data.data.lastPage)
   }
 
   // 分类列表
@@ -29,8 +33,25 @@ const Index = () => {
     setBlogLatestList(response.data.data)
   }
 
+  // const [id, setId] = useState()
+  // 获取博客信息
+  const getBlogInfo = async (id: number) => {
+    const response = await axios.get(`http://localhost:6754/api/blog/${id}`)
+    return response.data
+  }
+
   useEffect(() => {
-    getBlogPageList()
+    // getBlogPageList()
+    (
+      async () => {
+        const { data } = await axios.get(`http://localhost:6754/api/blog/pageList?page=${page}`)
+        setBlogPageList(data.data.dataList)
+        setLastPage(data.data.lastPage)
+      }
+    )()
+  }, [page])  // 第二个参数，表示该参数发生变化时就执行一次
+
+  useEffect(() => {
     getTypeList()
     getBlogLatestList()
   }, [])
@@ -53,11 +74,12 @@ const Index = () => {
                         <div className="row">
                           <div className="col-md-8">
                             <div className="card-body">
-                              <h4 className="card-tit">{blog.title}</h4>
+                              <h4 className="card-tit" onClick={() => getBlogInfo(blog.id)}>{blog.title}</h4>
                               <p className="card-text">{blog.content}</p>
                               <div className='d-flex justify-content-between align-items-center'>
                                 <div className="text-musted">
-                                  img, nickname, {blog.views}, {blog.updated_at}
+                                  <img src="https://picsum.photos/200/150/?images=25" width={25} height={25} className='rounded-circle' alt="" />
+                                  &nbsp;&nbsp;{blog.nickname} {blog.views} {blog.updated_at}
                                 </div>
                                 <small className='text-musted'>
                                   <button className='btn btn-sm btn-outline-info' disabled type='button'>{blog.type_name}</button>
@@ -77,6 +99,9 @@ const Index = () => {
                 })}
               </div>
             </div>
+
+            <Pagination page={page} lastPage={lastPage} pageChanged={setPage} />
+
           </div>
 
           {/* 分类列表 */}
@@ -86,7 +111,7 @@ const Index = () => {
                 <header className="card-header text-info">分类</header>
                 <div className="card-body">
                   <ul className="list-group">
-                    {typeList.map((item,index) => {
+                    {typeList.map((item, index) => {
                       return (
                         <li className="list-group-item d-flex justify-content-between align-items-center" key={index}>
                           {item.type_name}
@@ -94,10 +119,6 @@ const Index = () => {
                         </li>
                       )
                     })}
-                    {/* <li className="list-group-item d-flex justify-content-between align-items-center">
-                      dsf
-                      <span className="badge badge-primary badge-pill">1</span>
-                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -109,7 +130,7 @@ const Index = () => {
               <ul className="list-group list-group-flush">
                 {blogLatestList.map((blog: Blog) => {
                   return (
-                    <li className="list-group-item" key={blog.id}>{blog.title}</li>
+                    <li className="list-group-item" onClick={() => getBlogInfo(blog.id)} key={blog.id}>{blog.title}</li>
                   )
                 })}
               </ul>

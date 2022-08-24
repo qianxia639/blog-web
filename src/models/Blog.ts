@@ -3,6 +3,7 @@ export class Blog {
     constructor(
         public id: number,
         public type_name: string,
+        public nickname: string,
         public title: string,
         public content: string,
         public flag: string,
