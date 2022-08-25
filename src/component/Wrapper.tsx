@@ -8,16 +8,10 @@ class Wrapper extends Component<any, any> {
         return (
             <>
                 <Nav />
-                <div className="container">
-                    {/* <div className="bv-example-row"> */}
-                        {/* <div className="row"> */}
-                            {/* <main role="main" className="col-md-9 col-lg-10 "> */}
-                                {this.props.children}
-                            {/* </main> */}
-                        </div>
-                    {/* </div> */}
+                <div className="container-fluid">
+                    {this.props.children}
+                </div>
 
-                {/* </div> */}
             </>
         )
     }

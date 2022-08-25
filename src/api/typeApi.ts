@@ -1,4 +1,4 @@
-import service from '../utils/request'
+import service from '../utils/http'
 
 /**
  * @description  获取分类列表

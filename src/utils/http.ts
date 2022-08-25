@@ -7,14 +7,21 @@ const instance = axios.create({
 
 // 请求响应器
 instance.interceptors.request.use(config => {
-
     config.headers = {
         'X-Token': '',
         ...config.headers
     }
 
     return config
-},(error) => {
+}, (error) => {
+    return Promise.reject(error)
+})
+
+// 请求响应器
+instance.interceptors.response.use(response => {
+
+    return response
+}, (error) => {
     return Promise.reject(error)
 })
 

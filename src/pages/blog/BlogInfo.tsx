@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { Component, useEffect, useState } from 'react'
-import Wrapper from '../component/Wrapper'
-import { Blog } from '../models/Blog'
-import '../assets/css/me.css'
+import Wrapper from '../../component/Wrapper'
+import { Blog } from '../../models/Blog'
+import '../../assets/css/me.css'
 import { useParams } from 'react-router-dom'
-import { Tag } from '../models/Tag'
+import { Tag } from '../../models/Tag'
 import moment from 'moment'
 
 const BlogInfo = () => {

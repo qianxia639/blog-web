@@ -7,49 +7,53 @@ import { Blog } from '../models/Blog'
 import Pagination from '../component/Pagination'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import BlogIndex from './blog/BlogIndex'
+import BlogLatest from './blog/BlogLatest'
 
 const Index = () => {
-  const [blogPageList, setBlogPageList] = useState([])
-  const [typeList, setTypeList] = useState([{ 'type_name': '', 'count': 0 }])
-  const [blogLatestList, setBlogLatestList] = useState([])
-  const [page, setPage] = useState(1)
-  const [lastPage, setLastPage] = useState(0)
+  // const [blogPageList, setBlogPageList] = useState([])
+  const [typeLimitList, setTypeLimitList] = useState([{ 'type_name': '', 'count': 0 }])
+  // const [blogLatestList, setBlogLatestList] = useState([])
+  // const [page, setPage] = useState(1)
+  // const [lastPage, setLastPage] = useState(0)
 
   // 分类列表
-  const getTypeList = async () => {
-    const response = await axios.get("type/list")
-    setTypeList(response.data.data)
+  const getTypeLimitList = async () => {
+    const response = await axios.get("type/limitList")
+    setTypeLimitList(response.data.data)
   }
 
   // 最新博客列表
-  const getBlogLatestList = async () => {
-    const response = await axios.get("blog/latestList")
-    setBlogLatestList(response.data.data)
-  }
+  // const getBlogLatestList = async () => {
+  //   const response = await axios.get("blog/latestList")
+  //   setBlogLatestList(response.data.data)
+  // }
+
+  // useEffect(() => {
+  //   // 博客分页列表
+  //   (
+  //     async () => {
+  //       const { data } = await axios.get(`blog/pageList?page=${page}`)
+  //       setBlogPageList(data.data.dataList)
+  //       setLastPage(data.data.lastPage)
+  //     }
+  //   )()
+  // }, [page])  // 第二个参数，表示该参数发生变化时就执行一次
 
   useEffect(() => {
-    // 博客分页列表
-    (
-      async () => {
-        const { data } = await axios.get(`blog/pageList?page=${page}`)
-        setBlogPageList(data.data.dataList)
-        setLastPage(data.data.lastPage)
-      }
-    )()
-  }, [page])  // 第二个参数，表示该参数发生变化时就执行一次
-
-  useEffect(() => {
-    getTypeList()
-    getBlogLatestList()
+    getTypeLimitList()
+    // getBlogLatestList()
   }, [])
 
   return (
     <Wrapper>
       {/* 左边 */}
       {/* container-fluid bv-example-row */}
-      <main className="container" role='main'>
+      <div className="container">
         <div className="row">
-          <div className="col-md-8 card-margin-max blog-main">
+          {/* 博客列表 */}
+          <BlogIndex />
+          {/* <div className="col-md-8 card-margin-max blog-main">
             <div className="card-deck">
               <div className="card">
                 <h3 className="card-header text-info">博客</h3>
@@ -89,7 +93,7 @@ const Index = () => {
 
             <Pagination page={page} lastPage={lastPage} pageChanged={setPage} />
 
-          </div>
+          </div> */}
 
           {/* 分类列表 */}
           <div className="col-md-4 card-margin-max">
@@ -98,7 +102,7 @@ const Index = () => {
                 <header className="card-header text-info">分类</header>
                 <div className="card-body">
                   <ul className="list-group">
-                    {typeList.map((item, index) => {
+                    {typeLimitList.map((item, index) => {
                       return (
                         <li className="list-group-item d-flex justify-content-between align-items-center" key={index}>
                           {item.type_name}
@@ -112,7 +116,8 @@ const Index = () => {
             </div>
 
             {/* 最新博客 */}
-            <div className="card card-margin" >
+            <BlogLatest/>
+            {/* <div className="card card-margin" >
               <div className="card-header text-info">近期更新</div>
               <ul className="list-group list-group-flush">
                 {blogLatestList.map((blog: Blog) => {
@@ -121,11 +126,11 @@ const Index = () => {
                   )
                 })}
               </ul>
-            </div>
+            </div> */}
 
           </div>
         </div>
-      </main >
+      </div >
     </Wrapper >
   )
 }
