@@ -13,7 +13,7 @@ const BlogInfo = () => {
     const params = useParams()  // 获取路由参数
 
    const getBlog =  async () => {
-        const { data } = await axios.get(`http://localhost:6754/api/blog/${params.id}`)
+        const { data } = await axios.get(`blog/${params.id}`)
         
         setBlog(new Blog(
             data.data.id,
@@ -31,11 +31,11 @@ const BlogInfo = () => {
 
     useEffect(() => {
         getBlog().then(async (res) => {
-           const resposne =  await axios.put(`http://localhost:6754/api/blog/incrViews?id=${res.data.id}`)
+           const resposne =  await axios.put(`blog/incrViews?id=${res.data.id}`)
         })
         // (
         //     async () => {
-        //         const { data } = await axios.get(`http://localhost:6754/api/blog/${params.id}`)
+        //         const { data } = await axios.get(`blog/${params.id}`)
                 
         //         setBlog(new Blog(
         //             data.data.id,

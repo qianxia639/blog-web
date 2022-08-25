@@ -1,25 +1,26 @@
 import axios from 'axios'
 import React, { Component, useEffect, useState } from 'react'
 
-const Captcha = (props: { captchaBase64: string, generateCaptcha: () => void }) => {
+// props: { captchaBase64: string, generateCaptcha: () => void }
+const Captcha = (props: any) => {
 
-    // const [captcha_id, setCaptchaId] = useState('')
-    // const [captcha_base64, setCaptchaBase64] = useState('')
+    const [captcha_base64, setCaptchaBase64] = useState('')
 
-    // const generateCaptcha = async () => {
-    //     const {data} = await axios.post("http://localhost:6754/api/captcha/generate")
-    //     setCaptchaId(data.data.captchaId)
-    //     setCaptchaBase64(data.data.captchaBase64)
-    //     props.it(captcha_id)
-    // }
+    const generateCaptcha = async () => {
+        const { data } = await axios.post("captcha/generate")
+        setCaptchaBase64(data.data.captchaBase64)
 
-    // useEffect(() => {
-    //     generateCaptcha()
-    // }, [])
+        props.getCaptchaId(data.data.captchaId)
+        
+    }
+
+    useEffect(() => {
+        generateCaptcha()
+    }, [])
 
     return (
         <div>
-            <img src={props.captchaBase64} onClick={props.generateCaptcha} />
+            <img src={captcha_base64} onClick={generateCaptcha} />
         </div>
     )
 

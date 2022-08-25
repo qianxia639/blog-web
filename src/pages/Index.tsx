@@ -8,7 +8,6 @@ import Pagination from '../component/Pagination'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-
 const Index = () => {
   const [blogPageList, setBlogPageList] = useState([])
   const [typeList, setTypeList] = useState([{ 'type_name': '', 'count': 0 }])
@@ -18,13 +17,13 @@ const Index = () => {
 
   // 分类列表
   const getTypeList = async () => {
-    const response = await axios.get("http://localhost:6754/api/type/list")
+    const response = await axios.get("type/list")
     setTypeList(response.data.data)
   }
 
   // 最新博客列表
   const getBlogLatestList = async () => {
-    const response = await axios.get("http://localhost:6754/api/blog/latestList")
+    const response = await axios.get("blog/latestList")
     setBlogLatestList(response.data.data)
   }
 
@@ -32,7 +31,7 @@ const Index = () => {
     // 博客分页列表
     (
       async () => {
-        const { data } = await axios.get(`http://localhost:6754/api/blog/pageList?page=${page}`)
+        const { data } = await axios.get(`blog/pageList?page=${page}`)
         setBlogPageList(data.data.dataList)
         setLastPage(data.data.lastPage)
       }

@@ -10,7 +10,6 @@ class Register extends Component {
     password = '';
     password_confire = '';
     captcha = '';
-    // captcha_id = '';
 
     state = {
         redirect: false,
@@ -20,12 +19,12 @@ class Register extends Component {
     register = async (e: SyntheticEvent) => {
         // 禁用默认表单行为
         e.preventDefault()
-        const response = await axios.post("http://localhost:6754/api/user/register", {
+        const response = await axios.post("user/register", {
             username: this.username,
             password: this.password,
             password_confire: this.password_confire,
-            // captcha: this.captcha,
-            // captcha_id: this.state.captcha_id
+            captcha: this.captcha,
+            captcha_id: this.state.captcha_id
         })
 
         if (response.data.state) {
@@ -35,6 +34,11 @@ class Register extends Component {
         }
     }
 
+    getCaptchaId = (captchaId:string) => {
+        this.setState({
+            captcha_id:captchaId
+        })
+    }
     
 
     render() {
@@ -59,10 +63,11 @@ class Register extends Component {
                     onChange={e => this.password_confire = e.target.value}
                 />
 
-                {/* <input type="text" className="form-control" placeholder="请再次输入验证码" required
+                <input type="text" className="form-control" placeholder="请再次输入验证码" required
                     onChange={e => this.captcha = e.target.value}
-                /> */}
-                {/* <Captcha it={(e: any) => this.setState({ captcha_id: e })} /> */}
+                />
+
+                <Captcha getCaptchaId={this.getCaptchaId}/>
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">注 册</button>
             </form>
