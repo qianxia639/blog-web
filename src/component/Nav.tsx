@@ -45,7 +45,7 @@ const Nav = () => {
                         <Link className="nav-link" to={'/'}>留言墙</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link" to={'/'}>归档</Link>
+                        <Link className="nav-link" to={'/archive'}>归档</Link>
                     </li>
                 </ul>
                 {/* <ul className="my-2 my-lg-0">

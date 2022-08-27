@@ -8,7 +8,7 @@ class Wrapper extends Component<any, any> {
         return (
             <>
                 <Nav />
-                <div className="container-fluid">
+                <div className="container">
                     {this.props.children}
                 </div>
 
