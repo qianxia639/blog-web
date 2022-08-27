@@ -23,7 +23,7 @@ const BlogLatest = () => {
   },[])
 
   return (
-    <div className="card card-margin" >
+    <div className="card card-margin-top" >
       <div className="card-header text-info">近期更新</div>
       <ul className="list-group list-group-flush">
         {blogLatestList.map((blog: Blog) => {

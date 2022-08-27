@@ -53,14 +53,14 @@ const Index = () => {
         <div className="row">
           {/* 博客列表 */}
           <BlogIndex />
-          {/* <div className="col-md-8 card-margin-max blog-main">
+          {/* <div className="col-md-8 card-margin-top-max blog-main">
             <div className="card-deck">
               <div className="card">
                 <h3 className="card-header text-info">博客</h3>
 
                 {blogPageList.map((blog: Blog) => {
                   return (
-                    <ul className='list-unstyled card-margin-small' key={blog.id}>
+                    <ul className='list-unstyled card-margin-top-small' key={blog.id}>
                       <li className="card ">
                         <div className="row">
                           <div className="col-md-8">
@@ -96,7 +96,7 @@ const Index = () => {
           </div> */}
 
           {/* 分类列表 */}
-          <div className="col-md-4 card-margin-max">
+          <div className="col-md-4 card-margin-top-max">
             <div className="card-deck">
               <div className="card">
                 <header className="card-header text-info">分类</header>
@@ -117,7 +117,7 @@ const Index = () => {
 
             {/* 最新博客 */}
             <BlogLatest/>
-            {/* <div className="card card-margin" >
+            {/* <div className="card card-margin-top" >
               <div className="card-header text-info">近期更新</div>
               <ul className="list-group list-group-flush">
                 {blogLatestList.map((blog: Blog) => {

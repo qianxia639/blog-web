@@ -24,7 +24,7 @@ const Archive = () => {
         <Wrapper>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-10 offset-md-1 card-margin-max">
+                    <div className="col-md-10 offset-md-1 card-margin-top-max">
                         <div className="card-deck">
                             <div className="card-body">
                                 <div className="card-headre text-info">
@@ -37,8 +37,8 @@ const Archive = () => {
 
                         </div>
 
-                        <h3 className="archive-text card-margin-max">2022</h3>
-                        <div className="card-deck card-margin-max">
+                        <h3 className="archive-text card-margin-top-max">2022</h3>
+                        <div className="card-deck card-margin-top-max">
                             <div className="card row pre-scrollable">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item">

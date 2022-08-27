@@ -23,14 +23,14 @@ const BlogIndex = () => {
     }, [page])  // 第二个参数，表示该参数发生变化时就执行一次
 
     return (
-        <div className="col-md-8 card-margin-max blog-main">
+        <div className="col-md-8 card-margin-top-max blog-main">
             <div className="card-deck">
                 <div className="card">
                     <h3 className="card-header text-info">博客</h3>
 
                     {blogPageList.map((blog: Blog) => {
                         return (
-                            <ul className='list-unstyled card-margin-small' key={blog.id}>
+                            <ul className='list-unstyled card-margin-top-small' key={blog.id}>
                                 <li className="card ">
                                     <div className="row">
                                         <div className="col-md-8">

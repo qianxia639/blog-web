@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../assets/css/me.css'
+
 const Nav = () => {
 
     // const [user, setUser] = useState({
@@ -39,7 +40,7 @@ const Nav = () => {
                         <Link className="nav-link" to={"/type"}>分类</Link>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link" to={'/'}>编辑</Link>
+                        <Link className="nav-link" to={'/edit'}>编辑</Link>
                     </li>
                     <li className="nav-item dropdown">
                         <Link className="nav-link" to={'/'}>留言墙</Link>

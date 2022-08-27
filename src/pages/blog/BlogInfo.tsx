@@ -81,9 +81,9 @@ const BlogInfo = () => {
         <Wrapper>
             <main className="container" role='main'>
                 <div className="row">
-                    <div className="col-md-8 card-margin-max">
+                    <div className="col-md-8 card-margin-top-max">
                         <div className="card">
-                            <div className="card-body card-margin-max">
+                            <div className="card-body card-margin-top-max">
                                 <h1 className='text-center'>{blog.title}</h1>
                                 <div className='d-flex justify-content-between align-items-center'>
                                     <small className="text-musted">
@@ -92,7 +92,7 @@ const BlogInfo = () => {
                                     </small>
                                 </div>
                                 {/* <p>{blog.content}</p> */}
-                                <div className='article card-margin-max'>
+                                <div className='article card-margin-top-max'>
                                     <ReactMarkdown
                                         children={blog.content}
                                         components={{
@@ -129,7 +129,7 @@ const BlogInfo = () => {
                         </div>
                     </div>
 
-                    <div className="col-md-4 card-margin max">
+                    <div className="col-md-4 card-margin-top max">
                         <div className="navigation">
                             <MarkdownNavbar source={blog.content} />
                         </div>

@@ -1,13 +1,13 @@
 
-.card-margin {
+.card-margin-top {
     margin-top: 3vh;
 }
 
-.card-margin-max {
+.card-margin-top-max {
     margin-top: 5vh;
 }
 
-.card-margin-small {
+.card-margin-top-small {
     margin-top: 1vh;
 }
 
@@ -25,3 +25,11 @@
     text-align: center;
     color: #17a2b8;
 }
+
+.footer-button {
+    margin-top: 1vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
