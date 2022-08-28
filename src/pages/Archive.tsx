@@ -14,8 +14,7 @@ const Archive = () => {
             async () => {
                 const { data } = await axios.get('archive/list')
                 setArchiveList(data.data)
-                setTotal(data.total)
-                console.log(archiveList)
+                setTotal(data.data.total)
             }
         )()
     }, [])

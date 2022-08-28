@@ -9,10 +9,11 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import BlogIndex from './blog/BlogIndex'
 import BlogLatest from './blog/BlogLatest'
+import { Type } from '../models/Type'
 
 const Index = () => {
   // const [blogPageList, setBlogPageList] = useState([])
-  const [typeLimitList, setTypeLimitList] = useState([{ 'type_name': '', 'count': 0 }])
+  const [typeLimitList, setTypeLimitList] = useState([new Type])
   // const [blogLatestList, setBlogLatestList] = useState([])
   // const [page, setPage] = useState(1)
   // const [lastPage, setLastPage] = useState(0)
@@ -106,7 +107,7 @@ const Index = () => {
                       return (
                         <li className="list-group-item d-flex justify-content-between align-items-center" key={index}>
                           {item.type_name}
-                          <span className="badge badge-primary badge-pill">{item.count}</span>
+                          <span className="badge badge-primary badge-pill">{item.amount}</span>
                         </li>
                       )
                     })}

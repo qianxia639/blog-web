@@ -40,7 +40,7 @@ const BlogIndex = () => {
                                                 <div className='d-flex justify-content-between align-items-center'>
                                                     <div className="text-musted">
                                                         <img src="https://picsum.photos/200/150/?images=25" width={25} height={25} className='rounded-circle' alt="" />
-                                                        &nbsp;&nbsp;{blog.nickname} {blog.views} {moment(blog.updated_at).format('YYYY-MM-DD')}
+                                                        &nbsp;&nbsp;{blog.nickname} {blog.views} {moment(blog.updated_at*1000).format('YYYY-MM-DD')}
                                                     </div>
                                                     <small className='text-musted'>
                                                         <button className='btn btn-sm btn-outline-info' disabled type='button'>{blog.type_name}</button>

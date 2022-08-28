@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types'
 import React, { Component, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Wrapper from '../../component/Wrapper'
 import '../../assets/css/me.css'
 import axios from 'axios'
 import BlogIndex from '../blog/BlogIndex'
+import { Type } from '../../models/Type'
 
 const TypeDashboard = () => {
 
-    const [typetList, setTypeList] = useState([{ 'id': 0, 'type_name': '' }])
+    const [typetList, setTypeList] = useState([new Type])
 
-    const [blogList,setBlogList] = useState([])
+    const [blogList, setBlogList] = useState([])
     const [page, setPage] = useState(1)
     const [lastPage, setLastPage] = useState(0)
 
@@ -21,8 +21,8 @@ const TypeDashboard = () => {
     }
 
     // 点击类别查询对应博客
-    const getBlogList = async (name:String) => {
-        const {data} = await axios.get(`blog/list?name=${name}&page=${page}`)
+    const getBlogList = async (name: String) => {
+        const { data } = await axios.get(`blog/list?name=${name}&page=${page}`)
         setLastPage(data.data.lastPage)
         setBlogList(data.data.dataList)
     }
@@ -40,7 +40,7 @@ const TypeDashboard = () => {
         <Wrapper>
             <div className="container">
                 <div className="row">
-                    <BlogIndex/>
+                    <BlogIndex />
                     {/* <div className="col-md-8 card-margin-max blog-main">
                         <div className="card-deck">
                             <div className="card">
@@ -57,7 +57,10 @@ const TypeDashboard = () => {
                                     <li className="list-group-item">
                                         {typetList.map((item) => {
                                             return (
-                                                <button onClick={() => getBlogList(item.type_name)} className='type-button btn btn-outline-primary rounded-pill' key={item.id}>{item.type_name}</button>
+                                                <button onClick={() => getBlogList(item.type_name)}
+                                                    className='type-button btn btn-outline-primary rounded-pill justify-content-between' key={item.id}>{item.type_name}
+                                                    <span className="badge badge-info badge-pill">{item.amount}</span>
+                                                </button>
                                             )
                                         })}
                                     </li>
