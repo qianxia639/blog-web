@@ -7,6 +7,7 @@ import BlogInfo from './pages/blog/BlogInfo';
 import Type from './pages/type/Type';
 import Archive from './pages/Archive';
 import BlogEdit from './pages/blog/BlogEdit';
+import User from './pages/admin/User';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/type' element={<Type />} />
           <Route path='/edit' element={<BlogEdit />} />
           <Route path='/archive' element={<Archive />} />
+          <Route path='/user' element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>
