@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import '../assets/css/me.css'
 
 const Nav = () => {
@@ -34,19 +34,19 @@ const Nav = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to={'/'}>首页</Link>
+                        <NavLink className="nav-link" to={'/'}>首页</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={"/type"}>分类</Link>
+                        <NavLink className="nav-link" to={"/type"}>分类</NavLink>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link" to={'/edit'}>编辑</Link>
+                        <NavLink className="nav-link" to={'/edit'}>编辑</NavLink>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link" to={'/'}>留言墙</Link>
+                        <NavLink className="nav-link" to={'/'}>留言墙</NavLink>
                     </li>
                     <li className="nav-item dropdown">
-                        <Link className="nav-link" to={'/archive'}>归档</Link>
+                        <NavLink className="nav-link" to={'/archive'}>归档</NavLink>
                     </li>
                 </ul>
                 <ul className="navbar-nav px-3">
@@ -55,7 +55,7 @@ const Nav = () => {
                             <span className="nav-profile-name">Louis Barnett</span>
                         </a>
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <Link to={'/user'} className="dropdown-item">
+                            <Link to={'/admin/user'} className="dropdown-item">
                                 <i className="mdi mdi-settings text-primary"></i>
                                 Settings
                             </Link>

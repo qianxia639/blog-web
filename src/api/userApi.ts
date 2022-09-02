@@ -23,3 +23,15 @@ export const login = async ({ ...data }) => {
         data: data
     })
 }
+
+/**
+ * @description  用户信息
+ * @param 
+ * @author token
+ */
+ export const userInfo = async () => {
+    return await service({
+        url: 'user/info',
+        method: 'get'
+    })
+}

@@ -22,7 +22,7 @@ function App() {
           <Route path='/type' element={<Type />} />
           <Route path='/edit' element={<BlogEdit />} />
           <Route path='/archive' element={<Archive />} />
-          <Route path='/user' element={<User />} />
+          <Route path='/admin/user' element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>

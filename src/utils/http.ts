@@ -1,4 +1,5 @@
 import axios from "axios";
+import storage from './storage'
 
 const instance = axios.create({
     baseURL: 'https://localhost:6754/api/',
@@ -8,7 +9,7 @@ const instance = axios.create({
 // 请求响应器
 instance.interceptors.request.use(config => {
     config.headers = {
-        'X-Token': '',
+        'X-Token': String(storage.getToken()),
         ...config.headers
     }
 
@@ -26,3 +27,4 @@ instance.interceptors.response.use(response => {
 })
 
 export default instance
+
