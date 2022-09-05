@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { SyntheticEvent, useState } from "react";
 import Captcha from "../component/Captcha";
 import '../assets/css/login.css';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -10,6 +11,8 @@ const Login = () => {
     const [captcha_id, setCaptchaId] = useState('')
     const [captcha, setCaptcha] = useState('')
 
+    const navigate = useNavigate()
+
     const login = async (e: SyntheticEvent) => {
         e.preventDefault()
         const response = await axios.post("user/login", {
@@ -17,8 +20,12 @@ const Login = () => {
             password: password,
             captcha: captcha,
             captcha_id: captcha_id
+        }).then(async () => {
+            const { data } = await axios.get("user/info")
+            console.log(data)
+            navigate('/', { replace: true })
         })
-        
+
         // storage.setToken(response.data.data)
         // console.log(response.data.data)
 

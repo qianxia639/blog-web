@@ -24,6 +24,11 @@ const Nav = () => {
     //     )()
     // }, [])
 
+    const logout = async () => {
+        await axios.post('user/logout')
+    }
+
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="nav-font" href="#">LYY_BLOG</a>
@@ -49,6 +54,7 @@ const Nav = () => {
                         <NavLink className="nav-link" to={'/archive'}>归档</NavLink>
                     </li>
                 </ul>
+
                 <ul className="navbar-nav px-3">
                     <li className="nav-item nav-profile dropdown">
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown" aria-expanded="false">
@@ -59,10 +65,10 @@ const Nav = () => {
                                 <i className="mdi mdi-settings text-primary"></i>
                                 Settings
                             </Link>
-                            <a className="dropdown-item">
+                            <Link to={'/login'} className="dropdown-item" onClick={logout}>
                                 <i className="mdi mdi-logout text-primary"></i>
                                 Logout
-                            </a>
+                            </Link>
                         </div>
                     </li>
                 </ul>

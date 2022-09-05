@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 import React, { Component, useEffect, useState } from 'react'
 import DashboardWrapper from '../../component/Dashboard_Wrapper'
 import Pagination from '../../component/Pagination'
@@ -43,7 +44,7 @@ const Users = () => {
                     <img src={user.avatar} width={25} height={25} className='rounded-circle' alt="" />
                   </td>
                   <td>{999}</td>
-                  <td>{user.created_at}</td>
+                  <td>{moment(user.created_at).format("YYYY-MM-DD HH:mm:ss")}</td>
                 </tr>
               )
             })}
